@@ -1,7 +1,11 @@
 # Hashedin-by-deloitte
-recruitement drive question asked in 2025
+recruitment drive question asked in 2025
 
 
+
+# Stock Distribution and String Operations Solutions
+
+This repository contains optimized solutions to various algorithmic problems involving stock distribution and string operations.
 
 ## Problems and Solutions
 
@@ -43,7 +47,7 @@ print(minMaxStockPerStore(N, quantities))  # Output: 5
 **Problem Statement:**
 Ashrae needs to type a string `s` but can reduce workload by:
 1. Appending one character at a time.
-2. Appending the entire string formed so far (only once).
+2. Append the entire string formed so far (only once).
 The goal is to find the minimum number of operations required to type `s`.
 
 **Solution Approach:**
@@ -74,10 +78,43 @@ print(min_operations_to_type(s))  # Output: 5
 ```
 
 ---
+
+### 3. **Bread Loaves Grouping for Maximum Sum of Averages**
+**Problem Statement:**
+Oliver, a kind bread maker, was given a task by the village chief to prepare a certain number of bread loaves for a festival. He must divide these loaves into at most `K` groups, ensuring each group has at least one loaf. The goal is to maximize the sum of the average loaves per group.
+
+**Solution Approach:**
+- Use **dynamic programming** or **binary search with greedy approach** to optimize the division.
+- Ensure each group contains at least one loaf.
+- Find a partitioning strategy that maximizes the sum of averages.
+
+**Python Implementation:**
+```python
+def maxSumOfAverages(nums, K):
+    from itertools import accumulate
+    
+    n = len(nums)
+    prefix_sum = [0] + list(accumulate(nums))
+    dp = [[0] * (K + 1) for _ in range(n + 1)]
+    
+    for i in range(1, n + 1):
+        dp[i][1] = prefix_sum[i] / i
+    
+    for k in range(2, K + 1):
+        for i in range(k, n + 1):
+            for j in range(k - 1, i):
+                dp[i][k] = max(dp[i][k], dp[j][k - 1] + (prefix_sum[i] - prefix_sum[j]) / (i - j))
+    
+    return dp[n][K]
+
+# Example usage
+nums = [9, 1, 2, 3, 9]
+K = 3
+print(maxSumOfAverages(nums, K))  # Output: 20
 ```
+
 
 ## Contributions
 Feel free to open an issue or submit a pull request if you find a bug or an optimization.
-
 
 
