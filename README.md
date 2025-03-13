@@ -3,10 +3,6 @@ recruitment drive question asked in 2025
 
 
 
-# Stock Distribution and String Operations Solutions
-
-This repository contains optimized solutions to various algorithmic problems involving stock distribution and string operations.
-
 ## Problems and Solutions
 
 ### 1. **Stock Distribution Problem**
